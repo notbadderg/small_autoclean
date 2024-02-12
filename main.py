@@ -39,7 +39,7 @@ def autoclean(considered_path: str, ext: str, threshold: int) -> dict:
                 file_path = os.path.join(path, file)
                 e = (file_path, os.path.getmtime(file_path))
                 temp_files.append(e)
-            temp_files = sorted(temp_files, key=lambda x: x[1], reverse=True)[:len(temp_files) - threshold]
+            temp_files = sorted(temp_files, key=lambda x: x[1], reverse=True)[threshold:]
             for removing_file in temp_files:
                 os.remove(removing_file[0])
                 res.append(removing_file[0])
